@@ -61,7 +61,6 @@ export function fetchWithMockLogin<T>(input: string, init: FetchInit) {
     const { username, password }: Record<string, string> = init?.data ?? {};
     // @ts-ignore
     const token = USE_NAME_AND_PASSWORD_MAP[`${username}-${password}`];
-    console.log(token)
     return fetchWithCatchError<T>(input, {
         ...init,
         headers: {

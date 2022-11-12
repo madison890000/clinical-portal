@@ -13,8 +13,10 @@ const PatientDetail = ({ id }: { id: string }) => {
         setPatient(detail)
     }, [setPatient])
     useEffect(() => {
-        getPatientDetail(id);
-    }, [id, getPatientDetail])
+        if (id) {
+            getPatientDetail(id);
+        }
+    }, [id,getPatientDetail]);
     return (
         <>
             {!patient && <Skeleton variant="rectangular" width={800} height={118} />}

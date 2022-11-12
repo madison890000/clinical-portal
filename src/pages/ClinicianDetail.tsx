@@ -15,7 +15,7 @@ const ClinicianDetail = () => {
     return (
         <>
             <div className={styles.container}>
-                <div className={styles.portalTitleContainer} >
+                <div className={styles.portalTitleContainer}>
                     <Typography variant="h4" align="center">Clinical Portal</Typography>
                 </div>
                 {!clinician && <Skeleton variant="rectangular" width={300} height={118} />}
@@ -25,15 +25,15 @@ const ClinicianDetail = () => {
             <Divider />
             <Tabs value={activeTab} onChange={handleChange}>
                 {
-                    patients?.map(patient => (
-                        <Tab style={{ minWidth: 500 }} label={`${patient.name} (${patient.id})`}
-                             key={patient.id} value={patient.id} />
+                    patients?.map((patient, index) => (
+                        <Tab style={{ minWidth: 400 }} label={`${patient.name} (${patient.id})`}
+                             key={patient.id} value={index} />
                     ))
                 }
             </Tabs>
             {
-                patients?.map(patient => (
-                    <TabPanel value={activeTab} index={patient?.id}>
+                patients?.map((patient, index) => (
+                    <TabPanel value={activeTab} index={index} key={patient?.id}>
                         <PatientDetail id={patient?.id} />
                     </TabPanel>
                 ))

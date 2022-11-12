@@ -44,6 +44,7 @@ const useAppStore = () => {
         setLoginStatus(LoginStatus.NotLogin);
         setPatients([]);
         setClinician(undefined);
+        window.notificator('Logout Success', 'success');
     }, [setLoginStatus]);
     useEffect(() => {
         if (loginStatus === LoginStatus.Login) {
