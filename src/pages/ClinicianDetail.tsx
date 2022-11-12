@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { Tab, Tabs, Typography } from '@mui/material';
 import PatientDetail from '../modules/PatientDetail';
 import ClinicianInfo from '../modules/ClinicianInfo';
@@ -16,9 +16,9 @@ const TabPanel = ({ children, value, index }: any) => {
 const ClinicianDetail = () => {
     const { clinician, patients } = useContext(AppContext);
     const [activeTab, setActiveTab] = useState<number>(0);
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    const handleChange = useCallback((event: React.SyntheticEvent, newValue: number) => {
         setActiveTab(newValue);
-    };
+    }, [setActiveTab]);
     return (
         <>
             <div style={{

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { Button, Card, Input, Typography } from '@mui/material';
 import { AppContext } from '../contexts/AppContext';
 import { useNavigate } from 'react-router';
@@ -9,7 +9,7 @@ const Login = () => {
     const [username, setUsername] = useState<string>();
     const [password, setPassword] = useState<string>();
     const navigate = useNavigate();
-    const onSubmit = async () => {
+    const onSubmit = useCallback(async (username?: string, password?: string) => {
         if (username && password) {
             setLoading(true);
             try {
@@ -18,11 +18,10 @@ const Login = () => {
             } finally {
                 setLoading(false);
             }
-
         } else {
             console.log('user name or password not correct')
         }
-    }
+    }, [setLoading, navigate,login])
     return (
         <>
             <div style={{
@@ -62,7 +61,9 @@ const Login = () => {
                 }}>
                     <Button
                         disabled={!username || !password}
-                        onClick={onSubmit}
+                        onClick={() => {
+                            onSubmit(username, password)
+                        }}
                     >Login
                     </Button>
                 </div>
