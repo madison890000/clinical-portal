@@ -9,10 +9,12 @@ import React, {
 import { IClinician, LoginStatus, PatientSummary } from '../types';
 import { getClinicianInfo, getPatientList, login } from '../services';
 import { SESSION_TOKEN_SESSION_STORAGE_KEY } from '../constants';
+import Notification from '../modules/Notification';
 
 interface IAppContext {
     loginStatus: LoginStatus;
     login: (username: string, password: string) => Promise<void>;
+    logout: () => Promise<void>;
     setLoginStatus: Dispatch<SetStateAction<LoginStatus>>;
     clinician?: IClinician;
     patients?: PatientSummary[];
@@ -23,7 +25,7 @@ export const AppContext = React.createContext({} as IAppContext);
 
 const useAppStore = () => {
     const [loginStatus, setLoginStatus] = useState<LoginStatus>(LoginStatus.NotLogin);
-    const [clinician, setClinician] = useState<IClinician>();
+    const [clinician, setClinician] = useState<IClinician | undefined>();
     const [patients, setPatients] = useState<PatientSummary[]>([]);
     const getClinicianDetail = useCallback(async () => {
         const info = await getClinicianInfo();
@@ -35,7 +37,13 @@ const useAppStore = () => {
     }, [setPatients]);
     const loginHandle = useCallback(async (username: string, password: string) => {
         await login(username, password);
+        window.notificator('Login Success', 'success');
         setLoginStatus(LoginStatus.Login);
+    }, [setLoginStatus]);
+    const logout = useCallback(async () => {
+        setLoginStatus(LoginStatus.NotLogin);
+        setPatients([]);
+        setClinician(undefined);
     }, [setLoginStatus]);
     useEffect(() => {
         if (loginStatus === LoginStatus.Login) {
@@ -48,10 +56,11 @@ const useAppStore = () => {
         if (window.sessionStorage.getItem(SESSION_TOKEN_SESSION_STORAGE_KEY)) {
             setLoginStatus(LoginStatus.Login);
         }
-    }, [])
+    }, []);
     return {
         loginStatus,
         login: loginHandle,
+        logout,
         setLoginStatus,
         clinician,
         patients,
@@ -64,6 +73,7 @@ export const AppContextContainer = ({ children }: PropsWithChildren) => {
         loginStatus,
         clinician,
         login,
+        logout,
         setLoginStatus,
         patients,
     } = useAppStore();
@@ -72,12 +82,14 @@ export const AppContextContainer = ({ children }: PropsWithChildren) => {
             value={{
                 loginStatus,
                 login,
+                logout,
                 setLoginStatus,
                 clinician,
                 patients,
             }}
         >
             {children}
+            <Notification />
         </AppContext.Provider>
     );
 };

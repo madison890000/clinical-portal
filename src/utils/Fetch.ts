@@ -39,8 +39,11 @@ async function fetchWithCatchError<T>(input: string, init?: FetchInit) {
     } else if (status === 204) {
         return Promise.resolve('' as T);
     } else {
-        throw Error(HTTP_ERROR_STATUSES[status as HTTP_CODE] ?? 'Error')
+        const errorMessage = HTTP_ERROR_STATUSES[status as HTTP_CODE] ?? 'Something got wrong!';
+        window.notificator(errorMessage, 'error');
+        throw Error(errorMessage)
     }
+
 }
 
 
@@ -58,11 +61,12 @@ export function fetchWithMockLogin<T>(input: string, init: FetchInit) {
     const { username, password }: Record<string, string> = init?.data ?? {};
     // @ts-ignore
     const token = USE_NAME_AND_PASSWORD_MAP[`${username}-${password}`];
+    console.log(token)
     return fetchWithCatchError<T>(input, {
         ...init,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-            Authorization: token
+            Authorization: token ?? 'bear wrong token'
         }
     })
 }
