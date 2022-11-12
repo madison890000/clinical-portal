@@ -1,0 +1,10 @@
+.container {
+  margin: var(--base-margin);
+  padding: var(--base-padding);
+  border-radius: var(--base-border-radius) !important;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+}

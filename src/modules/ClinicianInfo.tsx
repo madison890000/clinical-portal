@@ -3,17 +3,12 @@ import { IClinician } from '../types';
 import Logout from './Logout';
 import { Card } from '@mui/material';
 import InfoItem from '../components/InfoItem';
+import styles from './ClinicianInfo.module.scss';
 
 const ClinicianInfo = ({ ...clinician }: IClinician) => {
     return (
-        <Card style={{
-            margin: 10,
-            padding: 20
-        }}>
-            <div style={{
-                display: 'flex',
-                alignItems: 'center'
-            }}>
+        <Card className={styles.container}>
+            <div className={styles.name}>
                 <Name{...clinician} />
                 <Logout />
             </div>

@@ -1,0 +1,27 @@
+.title {
+  margin: var(--base-margin);
+}
+
+.loginContainer {
+  text-align: center;
+  padding: var(--base-padding);
+  margin: auto;
+  width: 440px;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  border-radius: var(--base-border-radius) !important;
+}
+
+.inputContainer {
+  margin: var(--base-margin);
+}
+
+.input {
+  width: 100%;
+}
+
+.buttonContainer {
+  margin: var(--base-gap-small);
+}

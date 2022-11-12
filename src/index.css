@@ -11,3 +11,53 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+:root {
+  --base-font-size-large: 20px;
+  --base-font-size-middle: 16px;
+  --base-font-size-small: 12px;
+  --base-gap-unit: 2px;
+  --base-gap-2-unit: 4px;
+  --base-gap-small: 6px;
+  --base-gap: 12px;
+  --base-gap-large: 18px;
+
+  --base-padding: var(--base-gap);
+  --base-margin: var(--base-gap);
+  --base-border-radius: 12px;
+
+  /**
+   *  colors
+   */
+  --color-ash-gray: #b2beb5;
+  --color-blue-gray: #7393b3;
+  --color-charcoal: #36454f;
+  --color-dark-gray: #a9a9a9;
+  --color-glaucous: #6082b6;
+  --color-gray: #808080;
+  --color-gunmetal-gray: #818589;
+  --color-light-gray: #d3d3d3;
+  --color-pewter: #899499;
+  --color-platinum: #e5e4e2;
+  --color-sage-green: #8a9a5b;
+  --color-silver: #c0c0c0;
+  --color-slate-gray: #708090;
+  --color-smoke: #848884;
+  --color-steel-gray: #71797e;
+
+  --color-red: #ff7070;
+  --color-yellow: #fff69e;
+  --color-dark-yellow: #c2aa59;
+  --color-green: #93c47d;
+  --color-dark-red: #800000;
+
+  /**
+   * inline-block
+   */
+  --inline-block-padding: var(--base-padding);
+  --inline-block-margin: var(--base-gap-small);
+
+  color: var(--color-charcoal);
+  background-color: white;
+}

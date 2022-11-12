@@ -1,5 +1,6 @@
 import { Typography } from '@mui/material';
 import { capitalize } from '../utils';
+import styles from './InfoItem.module.scss';
 
 export const InfoItem = ({
                              name,
@@ -7,14 +8,8 @@ export const InfoItem = ({
                          }: { name: string; value: string | number }) => {
 
     return (
-        <div style={{
-            display: 'flex',
-            alignItems: 'center'
-        }}>
-            <div style={{
-                height: 32,
-                marginRight: 12
-            }}>{capitalize(name)}:
+        <div className={styles.container}>
+            <div className={styles.name}>{capitalize(name)}:
             </div>
             <Typography variant="overline" display="block">
                 {value}

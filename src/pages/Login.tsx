@@ -3,6 +3,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { Card, Input, Typography } from '@mui/material';
 import { AppContext } from '../contexts/AppContext';
 import { useNavigate } from 'react-router';
+import styles from './Login.module.scss';
 
 const Login = () => {
     const { login } = useContext(AppContext);
@@ -25,43 +26,29 @@ const Login = () => {
     }, [setLoading, navigate,login])
     return (
         <>
-            <div style={{
-                margin: '40px',
-                height: 200,
-            }}>
+            <div className={styles.title}>
                 <Typography variant="h4"  align="center">Clinical Portal Sign In</Typography>
             </div>
-            <Card style={{
-                textAlign: 'center',
-                padding: 20,
-                margin: 'auto',
-                width: 400
-            }}>
+            <Card className={styles.loginContainer}>
                 <Typography variant="caption">Username</Typography>
-                <div style={{
-                    margin: '30px',
-                }}>
+                <div className={styles.inputContainer}>
                     <Input
-                        style={{ width: '100%' }}
+                        className={styles.input}
                         value={username}
                         onChange={(e) => setUsername(e?.target?.value)}
                         placeholder="please input username"
                     />
                 </div>
                 <Typography variant="caption">Password</Typography>
-                <div style={{
-                    margin: '30px',
-                }}>
+                <div className={styles.inputContainer}>
                     <Input
-                        style={{ width: '100%' }}
+                        className={styles.input}
                         value={password}
                         onChange={(e) => setPassword(e?.target?.value)}
                         placeholder="please input password" type="password"
                     />
                 </div>
-                <div style={{
-                    margin: '5px',
-                }}>
+                <div className={styles.buttonContainer}>
                     <LoadingButton
                         variant="contained"
                         loading={loading}

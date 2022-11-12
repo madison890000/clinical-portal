@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.name{
+  height: 32px;
+  margin-right: var(--base-margin);
+}

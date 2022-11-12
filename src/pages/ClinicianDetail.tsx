@@ -3,15 +3,8 @@ import { Divider, Skeleton, Tab, Tabs, Typography } from '@mui/material';
 import PatientDetail from '../modules/PatientDetail';
 import ClinicianInfo from '../modules/ClinicianInfo';
 import { AppContext } from '../contexts/AppContext';
-
-
-const TabPanel = ({ children, value, index }: any) => {
-    return (
-        <div style={{ display: value === index ? 'block' : 'none' }}>
-            {children}
-        </div>
-    )
-}
+import TabPanel from '../components/TabPanel';
+import styles from './ClinicianDetail.module.scss';
 
 const ClinicianDetail = () => {
     const { clinician, patients } = useContext(AppContext);
@@ -21,17 +14,8 @@ const ClinicianDetail = () => {
     }, [setActiveTab]);
     return (
         <>
-            <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                margin: 20
-            }}>
-                <div style={{
-                    margin: '40px',
-                    flex: 'auto',
-                    textAlign: 'center'
-                }}>
+            <div className={styles.container}>
+                <div className={styles.portalTitleContainer} >
                     <Typography variant="h4" align="center">Clinical Portal</Typography>
                 </div>
                 {!clinician && <Skeleton variant="rectangular" width={300} height={118} />}

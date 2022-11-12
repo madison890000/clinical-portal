@@ -4,6 +4,7 @@ import { getPatientById } from '../services';
 import { IPatient } from '../types';
 import { Card, Skeleton } from '@mui/material';
 import InfoItem from '../components/InfoItem';
+import styles from './PatientDetail.module.scss';
 
 const PatientDetail = ({ id }: { id: string }) => {
     const [patient, setPatient] = useState<IPatient>();
@@ -18,10 +19,7 @@ const PatientDetail = ({ id }: { id: string }) => {
         <>
             {!patient && <Skeleton variant="rectangular" width={800} height={118} />}
             {patient && (
-                <Card style={{
-                    margin: 10,
-                    padding: 30
-                }}>
+                <Card className={styles.container}>
                     <Name {...patient} />
                     <InfoItem name="sex" value={patient?.sex} />
                     <InfoItem name="age" value={patient?.age} />

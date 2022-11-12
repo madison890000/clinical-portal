@@ -1,4 +1,5 @@
 import { IPerson } from '../types';
+import styles from './Name.module.scss';
 
 export const Name = ({
                          title,
@@ -13,26 +14,23 @@ export const Name = ({
     if (preferredName) {
         prefixName = (
             <>(
-                <div style={{ marginRight: '5px' }}>{preferredName}</div>
+                <div className={styles.text}>{preferredName}</div>
                 )</>
         )
     } else {
         prefixName = (
             <>
-                <div style={{ marginRight: '5px' }}>{firstName}</div>
+                <div className={styles.text}>{firstName}</div>
             </>
         )
     }
     return (
-        <div style={{
-            display: 'flex',
-            fontWeight: 'bolder'
-        }}>
-            <div style={{ marginRight: '5px' }}>{title}</div>
+        <div className={styles.container}>
+            <div className={styles.text}>{title}</div>
             {prefixName}
-            <div style={{ marginRight: '5px' }}>{middleName}</div>
-            <div style={{ marginRight: '5px' }}>{familyName}</div>
-            <div style={{ marginRight: '5px' }}>{suffix}</div>
+            <div className={styles.text}>{middleName}</div>
+            <div className={styles.text}>{familyName}</div>
+            <div className={styles.text}>{suffix}</div>
         </div>
     )
 }
