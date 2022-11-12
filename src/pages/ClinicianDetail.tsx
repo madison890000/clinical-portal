@@ -1,18 +1,20 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Tab, Tabs, Typography } from '@mui/material';
-import Name from '../components/Name';
 import PatientDetail from '../modules/PatientDetail';
+import ClinicianInfo from '../modules/ClinicianInfo';
+import { AppContext } from '../contexts/AppContext';
 
 
 const TabPanel = ({ children, value, index }: any) => {
     return (
-        <>
-            {value === index && children}
-        </>
+        <div style={{ display: value === index ? 'block' : 'none' }}>
+            {children}
+        </div>
     )
 }
 
 const ClinicianDetail = () => {
+    const { clinician, patients } = useContext(AppContext);
     const [activeTab, setActiveTab] = useState<number>(0);
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setActiveTab(newValue);
@@ -32,23 +34,24 @@ const ClinicianDetail = () => {
                 }}>
                     <Typography align="center">Clinical Portal</Typography>
                 </div>
-                <div>
-                    <Name
-                        title="title" firstName={'firstName'} familyName={'familyName'}
-                    />
-                </div>
+                {clinician && <ClinicianInfo {...clinician} />}
             </div>
 
+
             <Tabs value={activeTab} onChange={handleChange}>
-                <Tab label="item1" />
-                <Tab label="item2" />
+                {
+                    patients?.map(patient => (
+                        <Tab label={patient.name} key={patient.id} value={patient.id} />
+                    ))
+                }
             </Tabs>
-            <TabPanel value={activeTab} index={0}>
-                <PatientDetail id={'test'} />
-            </TabPanel>
-            <TabPanel value={activeTab} index={1}>
-                <PatientDetail id={'test2'} />
-            </TabPanel>
+            {
+                patients?.map(patient => (
+                    <TabPanel value={activeTab} index={patient?.id}>
+                        <PatientDetail id={patient?.id} />
+                    </TabPanel>
+                ))
+            }
         </>
     )
 }

@@ -1,16 +1,20 @@
-import { useState } from 'react';
-import { login } from '../services';
+import { useContext, useState } from 'react';
 import { Button, Card, Input, Typography } from '@mui/material';
+import { AppContext } from '../contexts/AppContext';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
+    const { login } = useContext(AppContext);
     const [loading, setLoading] = useState<boolean>();
     const [username, setUsername] = useState<string>();
     const [password, setPassword] = useState<string>();
+    const navigate = useNavigate();
     const onSubmit = async () => {
         if (username && password) {
             setLoading(true);
             try {
                 await login(username, password);
+                navigate('/clinician-detail')
             } finally {
                 setLoading(false);
             }

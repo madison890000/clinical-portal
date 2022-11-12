@@ -2,6 +2,7 @@ import fetchMock from 'fetch-mock';
 // @ts-ignore
 import { initFetchMock } from './FetchMock/mock-api-source';
 import HTTP_ERROR_STATUSES, { HTTP_CODE } from '../constants/HttpErrorStatus';
+import { SESSION_TOKEN_SESSION_STORAGE_KEY } from '../constants';
 
 initFetchMock(fetchMock);
 
@@ -9,6 +10,7 @@ initFetchMock(fetchMock);
 interface FetchInit extends Omit<Omit<RequestInit, 'headers'>, 'body'> {
     data?: Record<string, any>;
     headers?: {
+        'Content-Type': string;
         Authorization: string | null;
     };
 }
@@ -30,15 +32,11 @@ async function fetchWithCatchError<T>(input: string, init?: FetchInit) {
         ...init,
         body: requestBody
     });
-    const { status, body } = res;
+    const { status } = res;
     if (status === 200) {
-        if (body && body.hasOwnProperty('json')) {
-            // @ts-ignore
-            return body.json() as Promise<T>;
-        }
-        return Promise.resolve('');
+        return await res.json() as Promise<T>
     } else if (status === 204) {
-        return Promise.resolve('');
+        return Promise.resolve('' as T);
     } else {
         throw Error(HTTP_ERROR_STATUSES[status as HTTP_CODE] ?? 'Error')
     }
@@ -49,8 +47,9 @@ export function fetchWithAuthorization<T>(input: string, init?: FetchInit) {
     return fetchWithCatchError<T>(input, {
         ...init,
         headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
             // todo: mock api has error, need to fix, hard code token for test
-            Authorization: 'Basic am9zaHM6dnV1R2ZLa3Q='
+            Authorization: window.sessionStorage.getItem(SESSION_TOKEN_SESSION_STORAGE_KEY)
         }
     })
 }

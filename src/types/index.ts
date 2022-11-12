@@ -17,15 +17,22 @@ export type IPatient = {
     sex: 'Male' | 'Female' | 'Unknown' | 'Indeterminate';
 } & IPerson;
 
+export type PatientSummary = {
+    id: string;
+    name: string;
+}
 
 export type IPatientList = {
-    patients: {
-        id: string;
-        name: string;
-    }[];
+    patients: PatientSummary[];
 }
 
 export type IBaseErrorResponse = {
     httpStatusCode: number;
     errorMessage: string;
+}
+
+export enum LoginStatus {
+    NotLogin,
+    Login,
+    TokenExpired
 }
