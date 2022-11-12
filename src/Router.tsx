@@ -3,8 +3,8 @@ import Login from './modules/Login';
 
 const Router = createBrowserRouter(
     createRoutesFromElements([
-        <Route path="/" element={<div></div>}>
-            <Route path="login" element={<Login />} />
-        </Route>
+        <>
+            <Route path="/login" element={<Login />} />
+        </>
     ]));
 export default Router
