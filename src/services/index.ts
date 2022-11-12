@@ -1,8 +1,8 @@
-import { fetchWithAuthorization } from '../utils/Fetch';
+import { fetchWithAuthorization, fetchWithMockLogin } from '../utils/Fetch';
 import { IClinician, IPatient, IPatientList } from '../types';
 
 export const login = (username: string, password: string) => {
-    return fetchWithAuthorization('/login', {
+    return fetchWithMockLogin('/login', {
         method: 'POST',
         data: {
             username,
