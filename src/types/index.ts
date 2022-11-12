@@ -15,8 +15,15 @@ export type IClinician = {
 export type IPatient = {
     age: number;
     sex: 'Male' | 'Female' | 'Unknown' | 'Indeterminate';
-}& IPerson;
+} & IPerson;
 
+
+export type IPatientList = {
+    patients: {
+        id: string;
+        name: string;
+    }[];
+}
 
 export type IBaseErrorResponse = {
     httpStatusCode: number;
