@@ -1,5 +1,5 @@
 import { useCallback, useContext, useState } from 'react';
-import { Tab, Tabs, Typography } from '@mui/material';
+import { Divider, Skeleton, Tab, Tabs, Typography } from '@mui/material';
 import PatientDetail from '../modules/PatientDetail';
 import ClinicianInfo from '../modules/ClinicianInfo';
 import { AppContext } from '../contexts/AppContext';
@@ -32,16 +32,18 @@ const ClinicianDetail = () => {
                     flex: 'auto',
                     textAlign: 'center'
                 }}>
-                    <Typography align="center">Clinical Portal</Typography>
+                    <Typography variant="h4" align="center">Clinical Portal</Typography>
                 </div>
+                {!clinician && <Skeleton variant="rectangular" width={300} height={118} />}
                 {clinician && <ClinicianInfo {...clinician} />}
             </div>
 
-
+            <Divider />
             <Tabs value={activeTab} onChange={handleChange}>
                 {
                     patients?.map(patient => (
-                        <Tab label={patient.name} key={patient.id} value={patient.id} />
+                        <Tab style={{ minWidth: 500 }} label={`${patient.name} (${patient.id})`}
+                             key={patient.id} value={patient.id} />
                     ))
                 }
             </Tabs>

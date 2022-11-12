@@ -1,5 +1,6 @@
 import { useCallback, useContext, useState } from 'react';
-import { Button, Card, Input, Typography } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
+import { Card, Input, Typography } from '@mui/material';
 import { AppContext } from '../contexts/AppContext';
 import { useNavigate } from 'react-router';
 
@@ -28,7 +29,7 @@ const Login = () => {
                 margin: '40px',
                 height: 200,
             }}>
-                <Typography align="center">Clinical Portal Sign In</Typography>
+                <Typography variant="h4"  align="center">Clinical Portal Sign In</Typography>
             </div>
             <Card style={{
                 textAlign: 'center',
@@ -36,6 +37,7 @@ const Login = () => {
                 margin: 'auto',
                 width: 400
             }}>
+                <Typography variant="caption">Username</Typography>
                 <div style={{
                     margin: '30px',
                 }}>
@@ -46,6 +48,7 @@ const Login = () => {
                         placeholder="please input username"
                     />
                 </div>
+                <Typography variant="caption">Password</Typography>
                 <div style={{
                     margin: '30px',
                 }}>
@@ -59,13 +62,15 @@ const Login = () => {
                 <div style={{
                     margin: '5px',
                 }}>
-                    <Button
+                    <LoadingButton
+                        variant="contained"
+                        loading={loading}
                         disabled={!username || !password}
                         onClick={() => {
                             onSubmit(username, password)
                         }}
                     >Login
-                    </Button>
+                    </LoadingButton>
                 </div>
             </Card>
         </>

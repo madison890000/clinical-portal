@@ -12,26 +12,24 @@ export const Name = ({
     let prefixName: React.ReactNode;
     if (preferredName) {
         prefixName = (
-            <>
-                (
-                <div>{preferredName}</div>
-                )
-            </>
+            <>(
+                <div style={{ margin: '0 5px' }}>{preferredName}</div>
+                )</>
         )
     } else {
         prefixName = (
             <>
-                <div>{firstName}</div>
+                <div style={{ margin: '0 5px' }}>{firstName}</div>
             </>
         )
     }
     return (
         <div style={{ display: 'flex' }}>
-            <div>{title}</div>
+            <div style={{ marginRight: '5px' }}>{title}</div>
             {prefixName}
-            <div>{middleName}</div>
-            <div>{familyName}</div>
-            <div>{suffix}</div>
+            <div style={{ margin: '0 5px' }}>{middleName}</div>
+            <div style={{ margin: '0 5px' }}>{familyName}</div>
+            <div style={{ margin: '0 5px' }}>{suffix}</div>
         </div>
     )
 }
