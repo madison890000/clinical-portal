@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Tab, Tabs, Typography } from '@mui/material';
+import Name from '../components/Name';
+import PatientDetail from '../modules/PatientDetail';
 
 
 const TabPanel = ({ children, value, index }: any) => {
@@ -11,7 +13,7 @@ const TabPanel = ({ children, value, index }: any) => {
 }
 
 const ClinicianDetail = () => {
-    const [activeTab, setActiveTab] = useState<number>();
+    const [activeTab, setActiveTab] = useState<number>(0);
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setActiveTab(newValue);
     };
@@ -20,14 +22,21 @@ const ClinicianDetail = () => {
             <div style={{
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent: 'space-between',
+                margin: 20
             }}>
                 <div style={{
                     margin: '40px',
-                    height: 200,
+                    flex: 'auto',
+                    textAlign: 'center'
                 }}>
-                    <Typography align="left">Clinical Portal</Typography>
+                    <Typography align="center">Clinical Portal</Typography>
                 </div>
-                <div>info</div>
+                <div>
+                    <Name
+                        title="title" firstName={'firstName'} familyName={'familyName'}
+                    />
+                </div>
             </div>
 
             <Tabs value={activeTab} onChange={handleChange}>
@@ -35,10 +44,10 @@ const ClinicianDetail = () => {
                 <Tab label="item2" />
             </Tabs>
             <TabPanel value={activeTab} index={0}>
-                Item One
+                <PatientDetail id={'test'} />
             </TabPanel>
             <TabPanel value={activeTab} index={1}>
-                Item Two
+                <PatientDetail id={'test2'} />
             </TabPanel>
         </>
     )
