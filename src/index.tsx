@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router';
 import Router from './Router';
 import { AppContextContainer } from './contexts/AppContext';
-import Notification from './modules/Notification';
+import './Notification';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

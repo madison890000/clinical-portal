@@ -9,7 +9,6 @@ import React, {
 import { IClinician, LoginStatus, PatientSummary } from '../types';
 import { getClinicianInfo, getPatientList, login } from '../services';
 import { SESSION_TOKEN_SESSION_STORAGE_KEY } from '../constants';
-import Notification from '../modules/Notification';
 
 interface IAppContext {
     loginStatus: LoginStatus;
@@ -90,7 +89,6 @@ export const AppContextContainer = ({ children }: PropsWithChildren) => {
             }}
         >
             {children}
-            <Notification />
         </AppContext.Provider>
     );
 };
