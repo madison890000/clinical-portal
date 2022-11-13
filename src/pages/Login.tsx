@@ -5,6 +5,7 @@ import { AppContext } from '../contexts/AppContext';
 import { useNavigate } from 'react-router';
 import styles from './Login.module.scss';
 import { LoginStatus } from '../types';
+import { PORTAL_NAME, ROUTES } from '../constants';
 
 const Login = () => {
     const { login, loginStatus } = useContext(AppContext);
@@ -14,7 +15,7 @@ const Login = () => {
     const navigate = useNavigate();
     useEffect(() => {
         if (loginStatus === LoginStatus.Login) {
-            navigate('/clinician-detail');
+            navigate(ROUTES.ClinicianDetail);
         }
     }, [loginStatus, navigate]);
     const onSubmit = async () => {
@@ -34,7 +35,7 @@ const Login = () => {
         <>
             <div className={styles.title}>
                 <Typography variant="h4" align="center">
-                    Clinical Portal Sign In
+                    {PORTAL_NAME} Sign In
                 </Typography>
             </div>
             <Card className={styles.loginContainer}>

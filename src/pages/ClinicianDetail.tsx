@@ -7,6 +7,7 @@ import TabPanel from '../components/TabPanel';
 import styles from './ClinicianDetail.module.scss';
 import { LoginStatus } from '../types';
 import { useNavigate } from 'react-router';
+import { PORTAL_NAME, ROUTES } from '../constants';
 
 const ClinicianDetail = () => {
     const { clinician, patients, loginStatus } = useContext(AppContext);
@@ -20,7 +21,7 @@ const ClinicianDetail = () => {
     const navigate = useNavigate();
     useEffect(() => {
         if (loginStatus !== LoginStatus.Login) {
-            navigate('/login');
+            navigate(ROUTES.Login);
         }
     }, [loginStatus, navigate]);
     return (
@@ -28,7 +29,7 @@ const ClinicianDetail = () => {
             <div className={styles.container}>
                 <div className={styles.portalTitleContainer}>
                     <Typography variant="h4" align="center">
-                        Clinical Portal
+                        {PORTAL_NAME}
                     </Typography>
                 </div>
                 {!clinician && <Skeleton variant="rectangular" width={300} height={118} />}
