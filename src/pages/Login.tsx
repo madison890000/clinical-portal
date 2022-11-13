@@ -11,7 +11,7 @@ const Login = () => {
     const [username, setUsername] = useState<string>();
     const [password, setPassword] = useState<string>();
     const navigate = useNavigate();
-    const onSubmit = useCallback(async (username?: string, password?: string) => {
+    const onSubmit = async () => {
         if (username && password) {
             setLoading(true);
             try {
@@ -23,7 +23,7 @@ const Login = () => {
         } else {
             console.log('user name or password not correct')
         }
-    }, [setLoading, navigate,login])
+    }
     return (
         <>
             <div className={styles.title}>
@@ -53,9 +53,7 @@ const Login = () => {
                         variant="contained"
                         loading={loading}
                         disabled={!username || !password}
-                        onClick={() => {
-                            onSubmit(username, password)
-                        }}
+                        onClick={onSubmit}
                     >Login
                     </LoadingButton>
                 </div>
