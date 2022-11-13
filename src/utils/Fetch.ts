@@ -1,72 +1,65 @@
 import fetchMock from 'fetch-mock';
-// @ts-ignore
 import { initFetchMock } from './FetchMock/mock-api-source';
-import HTTP_ERROR_STATUSES, { HTTP_CODE } from '../constants/HttpErrorStatus';
+import HTTP_ERROR_STATUSES, { HTTP_ERROR_CODE } from '../constants/HttpErrorStatus';
 import { SESSION_TOKEN_SESSION_STORAGE_KEY } from '../constants';
 import { USE_NAME_AND_PASSWORD_MAP } from './FetchMock/login';
 
 initFetchMock(fetchMock);
 
 
-interface FetchInit extends Omit<Omit<RequestInit, 'headers'>, 'body'> {
+interface FetchInit extends RequestInit {
     data?: Record<string, any>;
-    headers?: {
-        'Content-Type': string;
-        Authorization: string | null;
-    };
 }
 
-async function fetchWithCatchError<T>(input: string, init?: FetchInit) {
+type Input = RequestInfo | URL;
+
+async function fetchWithCatchError<T>(input: Input, init?: FetchInit) {
     let requestBody: string | undefined;
     switch (init?.method) {
         case 'PUT':
-            requestBody = init.data ? JSON.stringify(init.data) : undefined;
-            break
         case 'POST':
             requestBody = init.data ? JSON.stringify(init.data) : undefined;
-            break
+            break;
         default:
             break;
     }
-    // @ts-ignore
     const res = await fetch(input, {
         ...init,
         body: requestBody
     });
     const { status } = res;
-    if (status === 200) {
-        return await res.json() as Promise<T>
-    } else if (status === 204) {
-        return Promise.resolve('' as T);
-    } else {
-        const errorMessage = HTTP_ERROR_STATUSES[status as HTTP_CODE] ?? 'Something got wrong!';
-        window.notificator(errorMessage, 'error');
-        throw Error(errorMessage)
+    switch (status) {
+        case 200:
+            return await res.json() as Promise<T>;
+        case 204:
+            return Promise.resolve(undefined);
+        default:
+            const errorMessage = HTTP_ERROR_STATUSES[status as HTTP_ERROR_CODE] ?? 'Something got wrong!';
+            window.notificator(errorMessage, 'error');
+            throw Error(errorMessage)
     }
-
 }
 
 
-export function fetchWithAuthorization<T>(input: string, init?: FetchInit) {
+export function fetchWithAuthorization<T>(input: Input, init?: FetchInit) {
     return fetchWithCatchError<T>(input, {
         ...init,
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-            Authorization: window.sessionStorage.getItem(SESSION_TOKEN_SESSION_STORAGE_KEY)
-        }
+            'Authorization': window.sessionStorage.getItem(SESSION_TOKEN_SESSION_STORAGE_KEY) ?? undefined,
+        } as HeadersInit,
     })
 }
 
-export function fetchWithMockLogin<T>(input: string, init: FetchInit) {
-    const { username, password }: Record<string, string> = init?.data ?? {};
-    // @ts-ignore
-    const token = USE_NAME_AND_PASSWORD_MAP[`${username}-${password}`];
+export function fetchWithMockLogin<T>(input: Input, init: FetchInit) {
+    const { username, password } = init?.data ?? {};
+    const key = `${username}-${password}` as keyof typeof USE_NAME_AND_PASSWORD_MAP;
+    const token = USE_NAME_AND_PASSWORD_MAP[key];
     return fetchWithCatchError<T>(input, {
         ...init,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
             Authorization: token ?? 'bear wrong token'
-        }
+        } as HeadersInit,
     })
 }
 
