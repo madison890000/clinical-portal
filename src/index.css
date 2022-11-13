@@ -49,12 +49,6 @@ code {
     --color-green: #93c47d;
     --color-dark-red: #800000;
 
-    /**
-   * inline-block
-   */
-    --inline-block-padding: var(--base-padding);
-    --inline-block-margin: var(--base-gap-small);
-
     color: var(--color-charcoal);
     background-color: white;
 }

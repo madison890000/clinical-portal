@@ -5,7 +5,7 @@ import useAppStore from './useAppStore';
 interface IAppContext {
     loginStatus: LoginStatus;
     login: (username: string, password: string) => Promise<void>;
-    logout: () => Promise<void>;
+    logout: () => void;
     clinician?: IClinician;
     patients?: PatientSummary[];
 }

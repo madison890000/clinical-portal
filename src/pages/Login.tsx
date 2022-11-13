@@ -16,7 +16,7 @@ const Login = () => {
         if (loginStatus === LoginStatus.Login) {
             navigate('/clinician-detail');
         }
-    }, [loginStatus]);
+    }, [loginStatus, navigate]);
     const onSubmit = async () => {
         if (username && password) {
             setLoading(true);

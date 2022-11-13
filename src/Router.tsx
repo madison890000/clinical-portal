@@ -1,4 +1,4 @@
-import { createBrowserRouter, createRoutesFromElements, Route, Routes } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import ClinicianDetail from './pages/ClinicianDetail';
 

@@ -84,7 +84,7 @@ const useAppStore = () => {
         },
         [dispatch]
     );
-    const logout = useCallback(async () => {
+    const logout = useCallback(() => {
         dispatch({
             type: 'Logout'
         });

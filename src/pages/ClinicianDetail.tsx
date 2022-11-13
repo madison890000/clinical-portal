@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { SyntheticEvent, useCallback, useContext, useEffect, useState } from 'react';
 import { Divider, Skeleton, Tab, Tabs, Typography } from '@mui/material';
 import PatientDetail from '../modules/PatientDetail';
 import ClinicianInfo from '../modules/ClinicianInfo';
@@ -12,7 +12,7 @@ const ClinicianDetail = () => {
     const { clinician, patients, loginStatus } = useContext(AppContext);
     const [activeTab, setActiveTab] = useState<number>(0);
     const handleChange = useCallback(
-        (event: React.SyntheticEvent, newValue: number) => {
+        (event: SyntheticEvent, newValue: number) => {
             setActiveTab(newValue);
         },
         [setActiveTab]
@@ -22,7 +22,7 @@ const ClinicianDetail = () => {
         if (loginStatus !== LoginStatus.Login) {
             navigate('/login');
         }
-    }, [loginStatus]);
+    }, [loginStatus, navigate]);
     return (
         <>
             <div className={styles.container}>
