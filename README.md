@@ -146,6 +146,6 @@ I think this is a very common functionality, and it didn't take too much time, S
 -   [ ] (i18n)
 -   [ ] (change notificator to be a singleton)
 -   [ ] (add unit tests)
--   [ ] (add gitHooks for eslint and prettier)
+-   [x] (add gitHooks for eslint and prettier)
 -   [ ] (add gitActions for CI/CD)
 -   [ ] (Support Docker, add Dockerfile)
