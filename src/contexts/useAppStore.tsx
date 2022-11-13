@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useReducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import { IClinician, LoginStatus, PatientSummary } from '../types';
 import { getClinicianInfo, getPatientList, login } from '../services';
 import { SESSION_TOKEN_SESSION_STORAGE_KEY } from '../constants';
