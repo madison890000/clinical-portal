@@ -1,13 +1,15 @@
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { Divider, Skeleton, Tab, Tabs, Typography } from '@mui/material';
 import PatientDetail from '../modules/PatientDetail';
 import ClinicianInfo from '../modules/ClinicianInfo';
 import { AppContext } from '../contexts/AppContext';
 import TabPanel from '../components/TabPanel';
 import styles from './ClinicianDetail.module.scss';
+import { LoginStatus } from '../types';
+import { useNavigate } from 'react-router';
 
 const ClinicianDetail = () => {
-    const { clinician, patients } = useContext(AppContext);
+    const { clinician, patients, loginStatus } = useContext(AppContext);
     const [activeTab, setActiveTab] = useState<number>(0);
     const handleChange = useCallback(
         (event: React.SyntheticEvent, newValue: number) => {
@@ -15,6 +17,12 @@ const ClinicianDetail = () => {
         },
         [setActiveTab]
     );
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (loginStatus !== LoginStatus.Login) {
+            navigate('/login');
+        }
+    }, [loginStatus]);
     return (
         <>
             <div className={styles.container}>

@@ -1,16 +1,22 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Card, Input, Typography } from '@mui/material';
 import { AppContext } from '../contexts/AppContext';
 import { useNavigate } from 'react-router';
 import styles from './Login.module.scss';
+import { LoginStatus } from '../types';
 
 const Login = () => {
-    const { login } = useContext(AppContext);
+    const { login, loginStatus } = useContext(AppContext);
     const [loading, setLoading] = useState<boolean>();
     const [username, setUsername] = useState<string>();
     const [password, setPassword] = useState<string>();
     const navigate = useNavigate();
+    useEffect(() => {
+        if (loginStatus === LoginStatus.Login) {
+            navigate('/clinician-detail');
+        }
+    }, [loginStatus]);
     const onSubmit = async () => {
         if (username && password) {
             setLoading(true);
