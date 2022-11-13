@@ -2,7 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Start this project
+
+## local node environment
 
 In the project directory, you can run:
 
@@ -14,18 +16,22 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+## Docker
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### you need build the docker image locally.
 
-### `npm run build`
+```
+  cd <project-root-path>
+  docker build -t clinical-portal ./
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### run docker locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You can start it using docker locally by :
+```
+docker run -p 3000:3000 clinical-portal
+```
+
 
 ## Library I choose
 
@@ -37,6 +43,7 @@ Your app is ready to be deployed!
 ## Folder Description
 
 ```
+  -nginx/
   -src/
     -components
     -constants
@@ -48,7 +55,7 @@ Your app is ready to be deployed!
     -utils
   -global.d.ts
   -Routers.tsx
-
+  -Dockerfile
 ```
 
 ### components
@@ -87,6 +94,13 @@ this is the place where we put the common utils, like the MockedFetch function.
 ### Routers.tsx
 
 this is the entry of React Router.
+
+### nginx folder and Dockerfile
+
+this is the config of Docker, it will start with nginx
+
+
+
 
 ## design decisions
 
@@ -148,4 +162,4 @@ I think this is a very common functionality, and it didn't take too much time, S
 -   [ ] (add unit tests)
 -   [x] (add gitHooks for eslint and prettier)
 -   [ ] (add gitActions for CI/CD)
--   [ ] (Support Docker, add Dockerfile)
+-   [x] (Support Docker, add Dockerfile)
