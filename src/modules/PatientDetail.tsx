@@ -8,15 +8,18 @@ import styles from './PatientDetail.module.scss';
 
 const PatientDetail = ({ id }: { id: string }) => {
     const [patient, setPatient] = useState<IPatient>();
-    const getPatientDetail = useCallback(async (patientId: string) => {
-        const detail = await getPatientById(patientId);
-        setPatient(detail)
-    }, [setPatient])
+    const getPatientDetail = useCallback(
+        async (patientId: string) => {
+            const detail = await getPatientById(patientId);
+            setPatient(detail);
+        },
+        [setPatient]
+    );
     useEffect(() => {
         if (id) {
             getPatientDetail(id);
         }
-    }, [id,getPatientDetail]);
+    }, [id, getPatientDetail]);
     return (
         <>
             {!patient && <Skeleton variant="rectangular" width={800} height={118} />}
@@ -28,7 +31,7 @@ const PatientDetail = ({ id }: { id: string }) => {
                 </Card>
             )}
         </>
-    )
-}
+    );
+};
 
-export default PatientDetail
+export default PatientDetail;

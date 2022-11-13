@@ -5,7 +5,7 @@ export type IPerson = {
     middleName?: string;
     familyName: string;
     suffix?: string;
-}
+};
 
 export type IClinician = {
     username: string;
@@ -20,16 +20,16 @@ export type IPatient = {
 export type PatientSummary = {
     id: string;
     name: string;
-}
+};
 
 export type IPatientList = {
     patients: PatientSummary[];
-}
+};
 
 export type IBaseErrorResponse = {
     httpStatusCode: number;
     errorMessage: string;
-}
+};
 
 export enum LoginStatus {
     NotLogin,

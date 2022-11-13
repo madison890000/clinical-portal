@@ -16,18 +16,20 @@ const Login = () => {
             setLoading(true);
             try {
                 await login(username, password);
-                navigate('/clinician-detail')
+                navigate('/clinician-detail');
             } finally {
                 setLoading(false);
             }
         } else {
-            console.log('user name or password not correct')
+            console.log('user name or password not correct');
         }
-    }
+    };
     return (
         <>
             <div className={styles.title}>
-                <Typography variant="h4"  align="center">Clinical Portal Sign In</Typography>
+                <Typography variant="h4" align="center">
+                    Clinical Portal Sign In
+                </Typography>
             </div>
             <Card className={styles.loginContainer}>
                 <Typography variant="caption">Username</Typography>
@@ -35,7 +37,7 @@ const Login = () => {
                     <Input
                         className={styles.input}
                         value={username}
-                        onChange={(e) => setUsername(e?.target?.value)}
+                        onChange={e => setUsername(e?.target?.value)}
                         placeholder="please input username"
                     />
                 </div>
@@ -44,8 +46,9 @@ const Login = () => {
                     <Input
                         className={styles.input}
                         value={password}
-                        onChange={(e) => setPassword(e?.target?.value)}
-                        placeholder="please input password" type="password"
+                        onChange={e => setPassword(e?.target?.value)}
+                        placeholder="please input password"
+                        type="password"
                     />
                 </div>
                 <div className={styles.buttonContainer}>
@@ -54,12 +57,13 @@ const Login = () => {
                         loading={loading}
                         disabled={!username || !password}
                         onClick={onSubmit}
-                    >Login
+                    >
+                        Login
                     </LoadingButton>
                 </div>
             </Card>
         </>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;

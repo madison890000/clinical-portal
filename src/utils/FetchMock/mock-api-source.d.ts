@@ -1,1 +1,1 @@
-export declare function initFetchMock(fetchMockInstance: any):void;
+export declare function initFetchMock(fetchMockInstance: any): void;

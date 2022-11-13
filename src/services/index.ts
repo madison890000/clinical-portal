@@ -9,16 +9,16 @@ export const login = (username: string, password: string) => {
             password
         }
     });
-}
+};
 
 export const getClinicianInfo = () => {
     return fetchWithAuthorization<IClinician>('/clinician-details');
-}
+};
 
 export const getPatientList = () => {
     return fetchWithAuthorization<IPatientList>('/patients');
-}
+};
 
 export const getPatientById = (patientId: string) => {
     return fetchWithAuthorization<IPatient>(`/patient-details/${patientId}`);
-}
+};

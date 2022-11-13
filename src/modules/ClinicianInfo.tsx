@@ -9,13 +9,13 @@ const ClinicianInfo = ({ ...clinician }: IClinician) => {
     return (
         <Card className={styles.container}>
             <div className={styles.name}>
-                <Name{...clinician} />
+                <Name {...clinician} />
                 <Logout />
             </div>
             <InfoItem name="username" value={clinician?.username} />
             <InfoItem name="role" value={clinician?.role} />
         </Card>
-    )
-}
+    );
+};
 
-export default ClinicianInfo
+export default ClinicianInfo;

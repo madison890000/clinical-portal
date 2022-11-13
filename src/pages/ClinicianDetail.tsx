@@ -9,14 +9,19 @@ import styles from './ClinicianDetail.module.scss';
 const ClinicianDetail = () => {
     const { clinician, patients } = useContext(AppContext);
     const [activeTab, setActiveTab] = useState<number>(0);
-    const handleChange = useCallback((event: React.SyntheticEvent, newValue: number) => {
-        setActiveTab(newValue);
-    }, [setActiveTab]);
+    const handleChange = useCallback(
+        (event: React.SyntheticEvent, newValue: number) => {
+            setActiveTab(newValue);
+        },
+        [setActiveTab]
+    );
     return (
         <>
             <div className={styles.container}>
                 <div className={styles.portalTitleContainer}>
-                    <Typography variant="h4" align="center">Clinical Portal</Typography>
+                    <Typography variant="h4" align="center">
+                        Clinical Portal
+                    </Typography>
                 </div>
                 {!clinician && <Skeleton variant="rectangular" width={300} height={118} />}
                 {clinician && <ClinicianInfo {...clinician} />}
@@ -24,22 +29,22 @@ const ClinicianDetail = () => {
 
             <Divider />
             <Tabs value={activeTab} onChange={handleChange}>
-                {
-                    patients?.map((patient, index) => (
-                        <Tab style={{ minWidth: 400 }} label={`${patient.name} (${patient.id})`}
-                             key={patient.id} value={index} />
-                    ))
-                }
+                {patients?.map((patient, index) => (
+                    <Tab
+                        style={{ minWidth: 400 }}
+                        label={`${patient.name} (${patient.id})`}
+                        key={patient.id}
+                        value={index}
+                    />
+                ))}
             </Tabs>
-            {
-                patients?.map((patient, index) => (
-                    <TabPanel value={activeTab} index={index} key={patient?.id}>
-                        <PatientDetail id={patient?.id} />
-                    </TabPanel>
-                ))
-            }
+            {patients?.map((patient, index) => (
+                <TabPanel value={activeTab} index={index} key={patient?.id}>
+                    <PatientDetail id={patient?.id} />
+                </TabPanel>
+            ))}
         </>
-    )
-}
+    );
+};
 
-export default ClinicianDetail
+export default ClinicianDetail;

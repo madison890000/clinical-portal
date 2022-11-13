@@ -6,10 +6,6 @@ interface ITabPanel {
 }
 
 const TabPanel: React.FC<PropsWithChildren<ITabPanel>> = ({ children, value, index }) => {
-    return (
-        <div style={{ display: value === index ? 'block' : 'none' }}>
-            {children}
-        </div>
-    )
-}
-export default TabPanel
+    return <div style={{ display: value === index ? 'block' : 'none' }}>{children}</div>;
+};
+export default TabPanel;

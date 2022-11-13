@@ -1,4 +1,4 @@
-import { createBrowserRouter, createRoutesFromElements, Route, } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import ClinicianDetail from './pages/ClinicianDetail';
 
@@ -8,5 +8,6 @@ const Router = createBrowserRouter(
             <Route path="/login" element={<Login />} />
             <Route path="/clinician-detail" element={<ClinicianDetail />} />
         </>
-    ]));
-export default Router
+    ])
+);
+export default Router;

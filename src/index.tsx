@@ -7,9 +7,7 @@ import Router from './Router';
 import { AppContextContainer } from './contexts/AppContext';
 import './Notification';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <AppContextContainer>
         <RouterProvider router={Router} />

@@ -13,13 +13,7 @@ interface IAppContext {
 export const AppContext = React.createContext({} as IAppContext);
 
 export const AppContextContainer = ({ children }: PropsWithChildren) => {
-    const {
-        loginStatus,
-        clinician,
-        login,
-        logout,
-        patients,
-    } = useAppStore();
+    const { loginStatus, clinician, login, logout, patients } = useAppStore();
     return (
         <AppContext.Provider
             value={{
@@ -27,7 +21,7 @@ export const AppContextContainer = ({ children }: PropsWithChildren) => {
                 login,
                 logout,
                 clinician,
-                patients,
+                patients
             }}
         >
             {children}

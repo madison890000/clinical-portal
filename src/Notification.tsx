@@ -18,20 +18,20 @@ const Notification = ({ message, severity }: any) => {
                 {message}
             </Alert>
         </Snackbar>
-    )
-}
+    );
+};
 
 const notificator = (message: string, severity: AlertColor) => {
     const notificatorDom = document.createElement('div');
     notificatorDom.setAttribute('id', `notificator-${Date.now()}`);
     document.body.appendChild(notificatorDom);
-    render(createPortal(
-        <Notification message={message} severity={severity} />,
-        notificatorDom
-    ), document.createElement('div'));
+    render(
+        createPortal(<Notification message={message} severity={severity} />, notificatorDom),
+        document.createElement('div')
+    );
     setTimeout(() => {
-        notificatorDom.remove()
-    }, NOTIFICATION_DURATION_TIME)
-}
+        notificatorDom.remove();
+    }, NOTIFICATION_DURATION_TIME);
+};
 
-window.notificator = notificator
+window.notificator = notificator;

@@ -1,5 +1,5 @@
 declare interface Window {
-    notificator: (message: string, severity: any)=> void;
+    notificator: (message: string, severity: any) => void;
 }
 declare module '*.module.scss' {
     const classes: { [key: string]: string };

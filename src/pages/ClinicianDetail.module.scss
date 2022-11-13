@@ -1,13 +1,12 @@
 .container {
-  display: flex;
-  alignItems: center;
-  justifyContent: space-between;
+    display: flex;
+    alignitems: center;
+    justifycontent: space-between;
 }
 
 .portalTitleContainer {
-  margin: var(--base-margin);
-  padding: var(--base-padding);
-  flex: auto;
-  text-align: center;
+    margin: var(--base-margin);
+    padding: var(--base-padding);
+    flex: auto;
+    text-align: center;
 }
-

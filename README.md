@@ -27,16 +27,14 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-
 ## Library I choose
 
-- Create React App
-- React + Typescript
-- Material UI
-- React Router
+-   Create React App
+-   React + Typescript
+-   Material UI
+-   React Router
 
 ## Folder Description
-
 
 ```
   -src/
@@ -59,86 +57,95 @@ this is the place where we put the pure UI components here, that means component
 with no dependencies about Global Store(React Context, Redux or Mobx) and Endpoint requests. We can easily test them.
 
 ### constants
+
 this is the place where we put some common used constants here, like some storage keys, HTTP_ERROR_STATUSES and constant
 duration times.
 
 ### contexts
+
 this is the place where we put Global store.
 
 ### modules
+
 this is the place where we put the Business components, which could related to the Global Context, history Or some global components
 Like Notification.
 
 ### pages
+
 this is the place where we put the screens(pages) entry here.
 
 ### types
+
 this is the place where we put the interfaces and types which can be used by the whole project file.
 
 ### utils
+
 this is the place where we put the common utils, like the MockedFetch function.
 
 ### global.d.ts
 
-
 ### Routers.tsx
+
 this is the entry of React Router.
 
 ## design decisions
 
 ### Why Not Redux?
+
 The reason I chose the React Context to be the Global Store rather than React-Redux
 is this is a small project which only contains 2 pages, it doesn't contains So much state we need to manage.
 React Context is the perfect one here, small and easy to understand. Keep it simple. It also will be easy to switch if
 we want the Redux in the future.
 
 ### Why Typescript?
+
 Of course, Javascript is well and can easily build this project as well, However, Typescript can help me developing
 this project more strictly and easier to find the bugs, wrong data format, or missing props. So the first things I
 did is create the types and interface I may needed.
 
 ### Why No unit test?
+
 I really want to start this project By TDD, However, time is very limited, considering writing test cases may took half
 of the developing time, I have to give it up, make this project work as soon as possible the the first rules.
 
 ### Why we need Modules when we already have pages(screens)?
+
 This is a continuation of work habits. Pages or screens is the entry and layout of how we want to put in each screen.
 Modules are the exactly implement.
 
-- 1 every Module could be used in different screens.
-- 2 splitting to small Modules can make them focus on small functionality, more easy to upgrade and test.
+-   1 every Module could be used in different screens.
+-   2 splitting to small Modules can make them focus on small functionality, more easy to upgrade and test.
 
 ### Why we need HTTP_ERROR_STATUSES when we already have the error message from endpoint response?
 
-- 1 Not all error message is suitable to show for our users. It will be better if we overwrite is in FE.
-- 2 i18n. it will be easy to switch to different languages if we handle error message in FE rather than directly
-show out the error from BE.
+-   1 Not all error message is suitable to show for our users. It will be better if we overwrite is in FE.
+-   2 i18n. it will be easy to switch to different languages if we handle error message in FE rather than directly
+    show out the error from BE.
 
 ### Why we need a new Fetch rather than using the fetch provided by browser?
 
-- 1 of course we can directly use the origin fetch, however, that means we need to set the Authorization and handle fetch error
-in every request(service). It is a bad solution and will create so many duplicated codes.
-- 2 we are using Mock endpoints right now, and it will be impossible if we want to hybrid use real endpoints and Mock
-endpoints. So I create a new Fetch, to make it easier to upgrade if we want switch to really endpoints.
+-   1 of course we can directly use the origin fetch, however, that means we need to set the Authorization and handle fetch error
+    in every request(service). It is a bad solution and will create so many duplicated codes.
+-   2 we are using Mock endpoints right now, and it will be impossible if we want to hybrid use real endpoints and Mock
+    endpoints. So I create a new Fetch, to make it easier to upgrade if we want switch to really endpoints.
 
 ### Why create a global notificator and bind it to window?
-- 1 at beginning, I was trying to using Global context to implement the Global notification. I chose right now
-solution after I find I want to show some message to user in the fetch Error, which Global Context can not work.
-- 2 binding to window rather than creating a singleton is cause by time limited. I would implement it to be singleton
-if I have more time.
+
+-   1 at beginning, I was trying to using Global context to implement the Global notification. I chose right now
+    solution after I find I want to show some message to user in the fetch Error, which Global Context can not work.
+-   2 binding to window rather than creating a singleton is cause by time limited. I would implement it to be singleton
+    if I have more time.
 
 ### Why add the Logout?
-I think this is a very common functionality, and it didn't take too much time, So I add it.
 
+I think this is a very common functionality, and it didn't take too much time, So I add it.
 
 ## Road Map
 
-- [ ] (Optimize view experience in Mobile screen)
-- [ ] (i18n)
-- [ ] (change notificator to be a singleton)
-- [ ] (add unit tests)
-- [ ] (add gitHooks for eslint and prettier)
-- [ ] (add gitActions for CI/CD)
-- [ ] (Support Docker, add Dockerfile)
-
-
+-   [ ] (Optimize view experience in Mobile screen)
+-   [ ] (i18n)
+-   [ ] (change notificator to be a singleton)
+-   [ ] (add unit tests)
+-   [ ] (add gitHooks for eslint and prettier)
+-   [ ] (add gitActions for CI/CD)
+-   [ ] (Support Docker, add Dockerfile)
