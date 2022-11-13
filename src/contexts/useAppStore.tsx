@@ -108,6 +108,7 @@ const useAppStore = () => {
     return {
         loginStatus,
         login: loginHandle,
+        dispatch,
         logout,
         clinician,
         patients
