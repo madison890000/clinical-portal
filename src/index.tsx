@@ -6,7 +6,7 @@ import { RouterProvider } from 'react-router';
 import Router from './Router';
 import { AppContextContainer } from './contexts/AppContext';
 import './modules/Notification';
-import './utils/initualMockFetch';
+import './utils/initialMockFetch';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
