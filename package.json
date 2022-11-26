@@ -29,6 +29,7 @@
     },
     "devDependencies": {
         "@types/react-test-renderer": "^18.0.0",
+        "fetch-mock-jest": "^1.5.1",
         "gh-pages": "^4.0.0",
         "react-scripts": "5.0.1",
         "react-test-renderer": "^18.2.0",
@@ -71,5 +72,31 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "jest": {
+        "collectCoverageFrom": [
+            "src/**/*.{js,jsx,ts,tsx}",
+            "!src/**/*.d.ts",
+            "!src/constants/**.*",
+            "!src/Router.tsx",
+            "!src/index.tsx",
+            "!src/setupTests.ts",
+            "!src/reportWebVitals.ts",
+            "!<rootDir>/src/services/**.*",
+            "!<rootDir>/src/types/**.*",
+            "!<rootDir>/src/contexts/**.*",
+            "!<rootDir>/src/utils/FetchMock/**.*",
+            "!<rootDir>/src/utils/initualMockFetch.ts",
+            "!<rootDir>/node_modules/",
+            "!<rootDir>/path/to/dir/"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "branches": 50,
+                "functions": 70,
+                "lines": 70,
+                "statements": 70
+            }
+        }
     }
 }

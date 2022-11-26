@@ -5,7 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router';
 import Router from './Router';
 import { AppContextContainer } from './contexts/AppContext';
-import './Notification';
+import './modules/Notification';
+import './utils/initualMockFetch';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
