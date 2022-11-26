@@ -1,10 +1,6 @@
-import fetchMock from 'fetch-mock';
-import { initFetchMock } from './FetchMock/mock-api-source';
 import HTTP_ERROR_STATUSES, { HTTP_ERROR_CODE } from '../constants/HttpErrorStatus';
 import { SESSION_TOKEN_SESSION_STORAGE_KEY } from '../constants';
 import { USE_NAME_AND_PASSWORD_MAP } from './FetchMock/login';
-
-initFetchMock(fetchMock);
 
 interface FetchInit extends RequestInit {
     data?: Record<string, any>;
@@ -48,7 +44,7 @@ export function fetchWithAuthorization<T>(input: Input, init?: FetchInit) {
     });
 }
 
-export function fetchWithMockLogin<T>(input: Input, init: FetchInit) {
+export function fetchWithLogin<T>(input: Input, init: FetchInit) {
     const { username, password } = init?.data ?? {};
     const key = `${username}-${password}` as keyof typeof USE_NAME_AND_PASSWORD_MAP;
     const token = USE_NAME_AND_PASSWORD_MAP[key];

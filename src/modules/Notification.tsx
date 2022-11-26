@@ -2,7 +2,7 @@ import { AlertColor, Snackbar } from '@mui/material';
 import { Alert } from '@mui/lab';
 import { useState } from 'react';
 import { createPortal, render } from 'react-dom';
-import { NOTIFICATION_DURATION_TIME } from './constants';
+import { NOTIFICATION_DURATION_TIME } from '../constants';
 
 const Notification = ({ message, severity }: any) => {
     const [open, setOpen] = useState(true);

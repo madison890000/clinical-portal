@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders TabPanel active correctly 1`] = `
+<div
+  style={
+    Object {
+      "display": "block",
+    }
+  }
+>
+  <div>
+    Tab panel Content
+  </div>
+</div>
+`;
+
+exports[`renders TabPanel non-active correctly 1`] = `
+<div
+  style={
+    Object {
+      "display": "none",
+    }
+  }
+>
+  <div>
+    Tab panel Content
+  </div>
+</div>
+`;

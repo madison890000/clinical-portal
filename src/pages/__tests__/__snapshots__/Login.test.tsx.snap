@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Login Page 1`] = `
+<div>
+  <div
+    class="title"
+  >
+    <h4
+      class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter css-149xwtl-MuiTypography-root"
+    >
+      Clinical Portal
+       Sign In
+    </h4>
+  </div>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root loginContainer css-bhp9pd-MuiPaper-root-MuiCard-root"
+  >
+    <span
+      class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
+    >
+      Username
+    </span>
+    <div
+      class="inputContainer"
+    >
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary input css-1tcs2i1-MuiInputBase-root-MuiInput-root"
+      >
+        <input
+          class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+          placeholder="please input username"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <span
+      class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
+    >
+      Password
+    </span>
+    <div
+      class="inputContainer"
+    >
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary input css-1tcs2i1-MuiInputBase-root-MuiInput-root"
+      >
+        <input
+          class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+          placeholder="please input password"
+          type="password"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="buttonContainer"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1twrztz-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+        disabled=""
+        id=":r0:"
+        tabindex="-1"
+        type="button"
+      >
+        Login
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ClinicianDetail Page 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="portalTitleContainer"
+    >
+      <h4
+        class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter css-149xwtl-MuiTypography-root"
+      >
+        Clinical Portal
+      </h4>
+    </div>
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-58ftfq-MuiSkeleton-root"
+      style="width: 300px; height: 118px;"
+    />
+  </div>
+  <hr
+    class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+  />
+  <div
+    class="MuiTabs-root css-1ujnqem-MuiTabs-root"
+  >
+    <div
+      class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
+      style="overflow: hidden; margin-bottom: 0px;"
+    >
+      <div
+        class="MuiTabs-flexContainer css-heg063-MuiTabs-flexContainer"
+        role="tablist"
+      />
+      <span
+        class="MuiTabs-indicator css-1aquho2-MuiTabs-indicator"
+        style="left: 0px; width: 0px;"
+      />
+    </div>
+  </div>
+</div>
+`;
