@@ -1,9 +1,17 @@
 .container {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    height: 48px;
 }
 
 .name {
     height: 32px;
+    width: 120px;
+    line-height: 28px;
     margin-right: var(--base-margin);
+}
+
+.value {
+    height: 32px;
+    line-height: 28px;
 }
