@@ -4,7 +4,7 @@ exports[`renders PatientDetail correctly 1`] = `
 <div>
   <span
     class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-58ftfq-MuiSkeleton-root"
-    style="width: 800px; height: 118px;"
+    style="width: 800px; height: 300px;"
   />
 </div>
 `;

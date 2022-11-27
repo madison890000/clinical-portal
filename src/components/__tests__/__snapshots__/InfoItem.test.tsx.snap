@@ -2,18 +2,21 @@
 
 exports[`renders InfoItem correctly 1`] = `
 <div
-  className="container"
+  className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 container css-mhc70k-MuiGrid-root"
 >
   <div
-    className="name"
+    className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+  />
+  <div
+    className="MuiGrid-root MuiGrid-item name css-13i4rnv-MuiGrid-root"
   >
     Age
-    :
+     :
   </div>
-  <span
-    className="MuiTypography-root MuiTypography-overline css-1kdyykn-MuiTypography-root"
+  <div
+    className="MuiGrid-root MuiGrid-item value css-13i4rnv-MuiGrid-root"
   >
     18
-  </span>
+  </div>
 </div>
 `;

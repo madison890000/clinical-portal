@@ -1,0 +1,22 @@
+.passwordContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputContainer {
+    margin: var(--base-margin) 0;
+}
+
+.input {
+    width: 100%;
+    border-radius: var(--base-border-radius) !important;
+}
+
+.buttonContainer {
+    text-align: center;
+    margin: var(--base-margin) 0;
+}
+
+.signInContainer {
+    width: 100%;
+}

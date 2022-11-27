@@ -5,8 +5,8 @@ import { SESSION_TOKEN_SESSION_STORAGE_KEY } from '../constants';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 
-const useAppStore = () => {
-    const [loginStatus, setLoginStatus] = useState(LoginStatus.NotLogin);
+const useAppStore = (status?: LoginStatus) => {
+    const [loginStatus, setLoginStatus] = useState(status ?? LoginStatus.NotLogin);
     const { data: clinician, refetch: refetchClinician } = useQuery<IClinician | undefined>(
         'getClinicianInfo',
         getClinicianInfo,

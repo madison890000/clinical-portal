@@ -1,15 +1,18 @@
-import { Typography } from '@mui/material';
 import { capitalize } from '../utils';
 import styles from './InfoItem.module.scss';
+import { Grid } from '@mui/material';
 
-export const InfoItem = ({ name, value }: { name: string; value: string | number }) => {
+export const InfoItem = ({ name, value, icon }: { name: string; value: string | number; icon?: React.ReactNode }) => {
     return (
-        <div className={styles.container}>
-            <div className={styles.name}>{capitalize(name)}:</div>
-            <Typography variant="overline" display="block">
+        <Grid container spacing={2} className={styles.container}>
+            <Grid item>{icon}</Grid>
+            <Grid item className={styles.name}>
+                {capitalize(name)} :
+            </Grid>
+            <Grid item className={styles.value}>
                 {value}
-            </Typography>
-        </div>
+            </Grid>
+        </Grid>
     );
 };
 

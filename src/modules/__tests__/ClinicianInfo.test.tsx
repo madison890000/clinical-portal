@@ -3,7 +3,6 @@ import ClinicianInfo from '../ClinicianInfo';
 import renderer from 'react-test-renderer';
 import { IClinician } from '../../types';
 
-jest.mock('../Logout.tsx');
 test('renders ClinicianInfo correctly', () => {
     const demoClinician = {
         username: 'joshs',
