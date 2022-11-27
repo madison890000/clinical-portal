@@ -5,9 +5,10 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router';
 import Router from './Router';
 import { AppContextContainer } from './contexts/AppContext';
-import './modules/Notification';
 import './utils/initialMockFetch';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
@@ -16,6 +17,7 @@ root.render(
         <AppContextContainer>
             <RouterProvider router={Router} />
         </AppContextContainer>
+        <ToastContainer />
     </QueryClientProvider>
 );
 

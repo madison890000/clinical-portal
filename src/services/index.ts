@@ -1,8 +1,8 @@
 import { IClinician, IPatient, IPatientList } from '../types';
-import { fetchWithAuthorization, fetchWithLogin } from '../utils/Fetch';
+import HttpClient from '../utils/HttpClient';
 
 export const login = (username: string, password: string) => {
-    return fetchWithLogin('/login', {
+    return HttpClient('/login', {
         method: 'POST',
         data: {
             username,
@@ -12,14 +12,14 @@ export const login = (username: string, password: string) => {
 };
 
 export const getClinicianInfo = () => {
-    return fetchWithAuthorization<IClinician>('/clinician-details');
+    return HttpClient<IClinician>('/clinician-details');
 };
 
 export const getPatientList = async () => {
-    const res = await fetchWithAuthorization<IPatientList>('/patients');
+    const res = await HttpClient<IPatientList>('/patients');
     return res?.patients;
 };
 
 export const getPatientById = (patientId: string) => {
-    return fetchWithAuthorization<IPatient>(`/patient-details/${patientId}`);
+    return HttpClient<IPatient>(`/patient-details/${patientId}`);
 };
