@@ -32,17 +32,6 @@ You can start it using docker locally by :
 docker run -p 3000:3000 clinical-portal
 ```
 
-
-## Library I choose
-
--   Create React App
--   React + Typescript
--   Material UI
--   React Router
--   React Query
--   React hook form
--   React toastify
-
 ## Folder Description
 
 ```
@@ -103,9 +92,40 @@ this is the entry of React Router.
 this is the config of Docker, it will start with nginx
 
 
+## Library I choose
+
+-   [Create React App](https://create-react-app.dev/)
+-   React + Typescript
+-   [Material UI](https://mui.com/)
+-   [React Router](https://reactrouter.com/en/main)
+-   [React Query](https://react-query-v3.tanstack.com/)
+-   [React hook form](https://react-hook-form.com/)
+-   [React toastify](https://fkhadra.github.io/react-toastify/introduction)
 
 
 ## design decisions
+
+### Why React Query
+
+React Query is an awesome customer hooks(for server-state) library, can easily get data and manage the data in FE, including
+refresh, cache and so on.
+
+### Why React hook form
+
+We always need to manage forms in FE project, especially for admin portal. A good hook-form-manager-tools can help us
+to manage the submit, validation.
+
+### Why React toastify
+
+Material doesn't give us a global toast, of course we can manually create one just like this project previously,
+However, it is better if we pass this work developing this functionality to react-toastify, So we can focus on
+other higher level functionality.
+
+### Why Material UI?
+
+Material UI is a commonly used UI Component library in many FE project. It provide many common used Component like
+Card, Menu, Tab, and Icons.
+
 
 ### Why Not Redux?
 
@@ -134,16 +154,18 @@ Modules are the exactly implement.
 -   2 i18n. it will be easy to switch to different languages if we handle error message in FE rather than directly
     show out the error from BE.
 
-### Why we need a new Fetch rather than using the fetch provided by browser?
+### Why we need a new Fetch rather than using the fetch provided by browser? Why not Axios?
 
 -   1 of course we can directly use the origin fetch, however, that means we need to set the Authorization and handle fetch error
     in every request(service). It is a bad solution and will create so many duplicated codes.
 -   2 we are using Mock endpoints right now, and it will be impossible if we want to hybrid use real endpoints and Mock
     endpoints. So I create a new Fetch, to make it easier to upgrade if we want switch to really endpoints.
+-   3 I was trying to import Axios when I start this project. Fetch-mock only Observer native fetch request, However,
+Axios is based on XMLHttpRequest. That is way I give up Axios.
 
 ### Why add the Logout?
 
-I think this is a very common functionality, and it didn't take too much time, So I add it.
+It is a very common functionality, and it didn't take too much time, So I add it.
 
 ## Road Map
 
