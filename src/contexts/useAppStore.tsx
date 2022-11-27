@@ -1,114 +1,46 @@
-import { useCallback, useEffect, useReducer } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { IClinician, LoginStatus, PatientSummary } from '../types';
 import { getClinicianInfo, getPatientList, login } from '../services';
 import { SESSION_TOKEN_SESSION_STORAGE_KEY } from '../constants';
-
-type State = {
-    loginStatus: LoginStatus;
-    clinician?: IClinician;
-    patients: PatientSummary[];
-};
-
-type ChangeLoginStatusAction = {
-    type: 'ChangeLoginStatus';
-    payload: LoginStatus;
-};
-type UpdateClinicianAction = {
-    type: 'UpdateClinician';
-    payload?: IClinician;
-};
-type UpdatePatientsAction = {
-    type: 'UpdatePatients';
-    payload: PatientSummary[];
-};
-type LogoutAction = {
-    type: 'Logout';
-};
-
-type Action = ChangeLoginStatusAction | UpdateClinicianAction | UpdatePatientsAction | LogoutAction;
-
-const INITIAL_STATE = {
-    loginStatus: LoginStatus.NotLogin,
-    patients: []
-};
-const reducer = (state: State, action: Action) => {
-    switch (action.type) {
-        case 'ChangeLoginStatus':
-            return {
-                ...state,
-                loginStatus: action.payload
-            };
-        case 'UpdateClinician':
-            return {
-                ...state,
-                clinician: action.payload
-            };
-        case 'UpdatePatients':
-            return {
-                ...state,
-                patients: action.payload
-            };
-        case 'Logout':
-            return {
-                ...INITIAL_STATE
-            };
-        default:
-            return state;
-    }
-};
+import { useQuery } from 'react-query';
 
 const useAppStore = () => {
-    const [{ loginStatus, clinician, patients }, dispatch] = useReducer(reducer, INITIAL_STATE);
-    const getClinicianDetail = useCallback(async () => {
-        const info = await getClinicianInfo();
-        dispatch({
-            type: 'UpdateClinician',
-            payload: info
-        });
-    }, [dispatch]);
-    const getPatients = useCallback(async () => {
-        const list = await getPatientList();
-        dispatch({
-            type: 'UpdatePatients',
-            payload: list?.patients ?? []
-        });
-    }, [dispatch]);
+    const [loginStatus, setLoginStatus] = useState(LoginStatus.NotLogin);
+    const { data: clinician, refetch: refetchClinician } = useQuery<IClinician | undefined>(
+        'getClinicianInfo',
+        getClinicianInfo
+    );
+    const { data: patients, refetch: refetchPatients } = useQuery<PatientSummary[] | undefined>(
+        'getPatients',
+        getPatientList
+    );
     const loginHandle = useCallback(
         async (username: string, password: string) => {
             await login(username, password);
             window.notificator('Login Success', 'success');
-            dispatch({
-                type: 'ChangeLoginStatus',
-                payload: LoginStatus.Login
-            });
+            setLoginStatus(LoginStatus.Login);
         },
-        [dispatch]
+        [setLoginStatus]
     );
     const logout = useCallback(() => {
-        dispatch({
-            type: 'Logout'
-        });
+        setLoginStatus(LoginStatus.NotLogin);
         window.notificator('Logout Success', 'success');
-    }, [dispatch]);
+    }, [setLoginStatus]);
     useEffect(() => {
         if (loginStatus === LoginStatus.Login) {
-            getClinicianDetail();
-            getPatients();
+            refetchClinician();
+            refetchPatients();
         }
-    }, [loginStatus, getClinicianDetail, getPatients]);
+    }, [loginStatus, refetchClinician, refetchPatients]);
 
     useEffect(() => {
         if (window.sessionStorage.getItem(SESSION_TOKEN_SESSION_STORAGE_KEY)) {
-            dispatch({
-                type: 'ChangeLoginStatus',
-                payload: LoginStatus.Login
-            });
+            setLoginStatus(LoginStatus.Login);
         }
     }, []);
     return {
         loginStatus,
         login: loginHandle,
-        dispatch,
         logout,
         clinician,
         patients

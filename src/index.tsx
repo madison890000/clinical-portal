@@ -7,12 +7,16 @@ import Router from './Router';
 import { AppContextContainer } from './contexts/AppContext';
 import './modules/Notification';
 import './utils/initialMockFetch';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
+const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-    <AppContextContainer>
-        <RouterProvider router={Router} />
-    </AppContextContainer>
+    <QueryClientProvider client={queryClient}>
+        <AppContextContainer>
+            <RouterProvider router={Router} />
+        </AppContextContainer>
+    </QueryClientProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

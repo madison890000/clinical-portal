@@ -1,5 +1,5 @@
 {
-    "name": "clinical portal",
+    "name": "clinical-portal",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -22,6 +22,7 @@
         "prettier": "^2.7.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-query": "^3.39.2",
         "react-router": "^6.4.3",
         "react-router-dom": "^6.4.3",
         "typescript": "^4.8.3",
@@ -78,6 +79,7 @@
             "src/**/*.{js,jsx,ts,tsx}",
             "!src/**/*.d.ts",
             "!src/constants/**.*",
+            "!src/tests/**.*",
             "!src/Router.tsx",
             "!src/index.tsx",
             "!src/setupTests.ts",
@@ -86,7 +88,7 @@
             "!<rootDir>/src/types/**.*",
             "!<rootDir>/src/contexts/**.*",
             "!<rootDir>/src/utils/FetchMock/**.*",
-            "!<rootDir>/src/utils/initualMockFetch.ts",
+            "!<rootDir>/src/utils/initialMockFetch.ts",
             "!<rootDir>/node_modules/",
             "!<rootDir>/path/to/dir/"
         ],

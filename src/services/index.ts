@@ -15,8 +15,9 @@ export const getClinicianInfo = () => {
     return fetchWithAuthorization<IClinician>('/clinician-details');
 };
 
-export const getPatientList = () => {
-    return fetchWithAuthorization<IPatientList>('/patients');
+export const getPatientList = async () => {
+    const res = await fetchWithAuthorization<IPatientList>('/patients');
+    return res?.patients;
 };
 
 export const getPatientById = (patientId: string) => {
