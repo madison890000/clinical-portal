@@ -89,7 +89,6 @@
             "!src/reportWebVitals.ts",
             "!<rootDir>/src/services/**.*",
             "!<rootDir>/src/types/**.*",
-            "!<rootDir>/src/contexts/**.*",
             "!<rootDir>/src/utils/FetchMock/**.*",
             "!<rootDir>/src/utils/initialMockFetch.ts",
             "!<rootDir>/node_modules/",
@@ -97,10 +96,10 @@
         ],
         "coverageThreshold": {
             "global": {
-                "branches": 50,
-                "functions": 60,
-                "lines": 70,
-                "statements": 70
+                "branches": 65,
+                "functions": 70,
+                "lines": 80,
+                "statements": 80
             }
         }
     }

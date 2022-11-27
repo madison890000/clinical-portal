@@ -39,6 +39,9 @@ docker run -p 3000:3000 clinical-portal
 -   React + Typescript
 -   Material UI
 -   React Router
+-   React Query
+-   React hook form
+-   React toastify
 
 ## Folder Description
 
@@ -117,11 +120,6 @@ Of course, Javascript is well and can easily build this project as well, However
 this project more strictly and easier to find the bugs, wrong data format, or missing props. So the first things I
 did is create the types and interface I may needed.
 
-### Why No unit test?
-
-I really want to start this project By TDD, However, time is very limited, considering writing test cases may took half
-of the developing time, I have to give it up, make this project work as soon as possible the the first rules.
-
 ### Why we need Modules when we already have pages(screens)?
 
 This is a continuation of work habits. Pages or screens is the entry and layout of how we want to put in each screen.
@@ -143,13 +141,6 @@ Modules are the exactly implement.
 -   2 we are using Mock endpoints right now, and it will be impossible if we want to hybrid use real endpoints and Mock
     endpoints. So I create a new Fetch, to make it easier to upgrade if we want switch to really endpoints.
 
-### Why create a global notificator and bind it to window?
-
--   1 at beginning, I was trying to using Global context to implement the Global notification. I chose right now
-    solution after I find I want to show some message to user in the fetch Error, which Global Context can not work.
--   2 binding to window rather than creating a singleton is cause by time limited. I would implement it to be singleton
-    if I have more time.
-
 ### Why add the Logout?
 
 I think this is a very common functionality, and it didn't take too much time, So I add it.
@@ -158,9 +149,8 @@ I think this is a very common functionality, and it didn't take too much time, S
 
 -   [ ] (Optimize view experience in Mobile screen)
 -   [ ] (i18n)
--   [ ] (change notificator to be a singleton)
 -   [x] (add unit tests)
 -   [ ] (improve test coverage greater thant 90)
 -   [x] (add gitHooks for eslint and prettier)
--   [ ] (add gitActions for CI/CD)
+-   [x] (add gitActions for CI/CD)
 -   [x] (Support Docker, add Dockerfile)

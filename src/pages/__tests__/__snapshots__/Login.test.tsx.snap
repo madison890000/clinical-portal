@@ -41,6 +41,7 @@ exports[`renders Login Page 1`] = `
             <input
               aria-invalid="false"
               class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
+              data-testid="sign-in-username"
               id=":r0:"
               name="username"
               placeholder="please input username"
@@ -96,6 +97,7 @@ exports[`renders Login Page 1`] = `
             <input
               aria-invalid="false"
               class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
+              data-testid="sign-in-password"
               id=":r1:"
               name="password"
               placeholder="please input password"
@@ -125,6 +127,7 @@ exports[`renders Login Page 1`] = `
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium signInContainer css-1twrztz-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+          data-testid="sign-in-btn"
           id=":r2:"
           tabindex="0"
           type="submit"
