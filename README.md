@@ -167,6 +167,13 @@ Axios is based on XMLHttpRequest. That is way I give up Axios.
 
 It is a very common functionality, and it didn't take too much time, So I add it.
 
+### Why HashRouter?
+
+Github home pages didn't support browser history.
+
+
+It is a very common functionality, and it didn't take too much time, So I add it.
+
 ## Road Map
 
 -   [ ] (Optimize view experience in Mobile screen)

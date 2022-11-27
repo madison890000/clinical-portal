@@ -1,9 +1,9 @@
-import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+import { createHashRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import ClinicianDetail from './pages/ClinicianDetail';
 import { ROUTES } from './constants';
 
-const Router = createBrowserRouter(
+const Router = createHashRouter(
     createRoutesFromElements([
         <>
             <Route path={ROUTES.Root} element={<Login />} />
