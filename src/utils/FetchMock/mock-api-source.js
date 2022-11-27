@@ -42,7 +42,7 @@ export function initFetchMock(fetchMockInstance) {
     var SESSION_TOKEN_SESSION_STORAGE_KEY = 'session-token';
     var LOGGED_IN_USER_SESSION_STORAGE_KEY = 'logged-in-user';
     var JOSH_SMITH_USERNAME = 'joshs';
-    var JOSH_SMITH_BASIC_AUTH = 'Basic am9zaHM6dnV1R2ZLa3Q=';
+    // var JOSH_SMITH_BASIC_AUTH = 'Basic am9zaHM6dnV1R2ZLa3Q=';
     var JOSH_SMITH_DETAILS = {
         username: 'joshs',
         role: 'General Practitioner',
@@ -80,7 +80,7 @@ export function initFetchMock(fetchMockInstance) {
         }
     };
     var AMY_BARKER_USERNAME = 'amyb';
-    var AMY_BARKER_BASIC_AUTH = 'Basic YW15YjpxaFp5dUtHZg==';
+    // var AMY_BARKER_BASIC_AUTH = 'Basic YW15YjpxaFp5dUtHZg==';
     var AMY_BARKER_DETAILS = {
         username: 'amyb',
         role: 'Physician',
