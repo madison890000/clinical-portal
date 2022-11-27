@@ -123,16 +123,13 @@ export function initFetchMock(fetchMockInstance) {
                 delay: generateRandomDelay()
             },
             function (_path, opts, e) {
-                var auth = getRequestAuthOrErrorResponse(opts);
-                if (typeof auth !== 'string') {
-                    return auth;
-                }
-                if (auth === JOSH_SMITH_BASIC_AUTH) {
+                const { data } = opts;
+                if (`${data.username}-${data.password}` === 'joshs-vuuGfKkt') {
                     window.sessionStorage.setItem(SESSION_TOKEN_SESSION_STORAGE_KEY, generateId());
                     window.sessionStorage.setItem(LOGGED_IN_USER_SESSION_STORAGE_KEY, JOSH_SMITH_USERNAME);
                     return new Response(204);
                 }
-                if (auth === AMY_BARKER_BASIC_AUTH) {
+                if (`${data.username}-${data.password}` === 'amyb-qhZyuKGf') {
                     window.sessionStorage.setItem(SESSION_TOKEN_SESSION_STORAGE_KEY, generateId());
                     window.sessionStorage.setItem(LOGGED_IN_USER_SESSION_STORAGE_KEY, AMY_BARKER_USERNAME);
                     return new Response(204);

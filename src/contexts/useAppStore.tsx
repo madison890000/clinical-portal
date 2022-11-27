@@ -3,28 +3,39 @@ import { IClinician, LoginStatus, PatientSummary } from '../types';
 import { getClinicianInfo, getPatientList, login } from '../services';
 import { SESSION_TOKEN_SESSION_STORAGE_KEY } from '../constants';
 import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 
 const useAppStore = () => {
     const [loginStatus, setLoginStatus] = useState(LoginStatus.NotLogin);
     const { data: clinician, refetch: refetchClinician } = useQuery<IClinician | undefined>(
         'getClinicianInfo',
-        getClinicianInfo
+        getClinicianInfo,
+        {
+            enabled: false
+        }
     );
     const { data: patients, refetch: refetchPatients } = useQuery<PatientSummary[] | undefined>(
         'getPatients',
-        getPatientList
+        getPatientList,
+        {
+            enabled: false
+        }
     );
     const loginHandle = useCallback(
         async (username: string, password: string) => {
             await login(username, password);
-            window.notificator('Login Success', 'success');
+            toast('Login Success', {
+                type: toast.TYPE.SUCCESS
+            });
             setLoginStatus(LoginStatus.Login);
         },
         [setLoginStatus]
     );
     const logout = useCallback(() => {
         setLoginStatus(LoginStatus.NotLogin);
-        window.notificator('Logout Success', 'success');
+        toast('Logout Success', {
+            type: toast.TYPE.SUCCESS
+        });
     }, [setLoginStatus]);
     useEffect(() => {
         if (loginStatus === LoginStatus.Login) {
